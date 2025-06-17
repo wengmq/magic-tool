@@ -1,7 +1,7 @@
 
-# 科学上网
+# magic-tool server by v2ray
 
-- 使用ubuntu24进行一键安装
-- 本地有ansible的话可以直接执行(对应host需要修改)：ansible-playbook ./deploy.yaml
-- 也可以可以把项目拷贝到集机器，执行 bash -x ./start_on_ubuntu24.sh
-- 如果第一次启动失败可以在重新执行一遍
+- One click installation using Ubuntu 24
+- If there is ansible locally, it can be executed directly (corresponding to the host that needs to be modified): `ansible-playbook./deploy. yaml`
+- You can also copy the project to the collection machine and execute `bash -x ./start_on_ubuntu24.sh`
+- If the first startup fails, you can execute it again
