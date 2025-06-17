@@ -1,0 +1,36 @@
+#!/usr/bin/env ansible-playbook
+---
+- hosts: 
+  - magic_server
+  gather_facts: False
+  become: yes
+  user: ubuntu 
+  tasks:
+    - name: "copy_conf"
+      copy:
+        src: "{{ playbook_dir }}/v2ray/"
+        dest: "/root/myvpn/v2ray/"
+        owner: root
+        group: root
+        mode: 0755
+    - name: "copy_ssl"
+      copy:
+        src: "{{ playbook_dir }}/ssl/"
+        dest: "/root/myvpn/ssl/"
+        owner: root
+        group: root
+        mode: 0755
+    - name: "copy_start"
+      copy:
+        src: "{{ playbook_dir }}/start_on_ubuntu24.sh"
+        dest: "/root/myvpn/"
+        owner: root
+        group: root
+        mode: 0755
+    - name: "start"
+      shell: | 
+        sudo cd /root/myvpn/
+        sudo bash -x /root/myvpn/start_on_ubuntu24.sh
+      register: shell_result
+    - debug:
+        var: shell_result.stdout_lines
